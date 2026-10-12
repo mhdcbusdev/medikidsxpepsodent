@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Medikids × Pepsodent Pro·Care — Healthy Mouth Journey</title>
+<meta name="description" content="Beli Pepsodent Pro·Care, dapatkan Voucher Medikids senilai Rp150.000. Jaga keseimbangan microbiome di rumah, lengkapi dengan pemeriksaan bersama dokter gigi Medikids." />
+
+<!-- ============================================================
+     FONTS
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS — ganti di sini kalau mau sesuaikan brand
+   ============================================================ */
+:root{
+  /* Warna brand Medikids / co-brand Pepsodent */
+  --mk-red:        #EA1C2D;
+  --mk-red-600:    #CE1226;
+  --mk-red-700:    #A60C20;
+
+  --mk-ink:        #2E1065;   /* judul di atas background terang */
+  --mk-violet:     #6D28D9;
+  --mk-purple:     #9333EA;
+  --mk-magenta:    #C026D3;
+
+  --mk-yellow:     #FDB913;
+  --mk-yellow-2:   #FFCE1F;
+  --mk-yellow-deep:#F39C12;
+
+  --lav-50:  #F7F1FD;
+  --lav-100: #EFE3FB;
+  --lav-200: #E4D2F7;
+
+  --text:    #3B2A52;
+  --muted:   #6B5B82;
+  --white:   #ffffff;
+
+  /* Gradasi ungu untuk section bertema */
+  --grad-purple: linear-gradient(180deg, #622381 0%, #bb48da 100%);
+  --grad-purple-soft: linear-gradient(180deg, #bb7bff 0%, #ddbdff 26%, #eedfff 46%, #ffffff 72%, #ffffff 100%);
+  --grad-red: linear-gradient(180deg, #e11b20 0%, #ad0004 100%);
+  --grad-yellow: linear-gradient(135deg, #FFD63D 0%, #FDB913 55%, #F39C12 100%);
+
+  --radius:   22px;
+  --radius-lg:30px;
+  --shadow:   0 18px 40px rgba(46,16,101,.14);
+  --shadow-sm:0 8px 22px rgba(46,16,101,.10);
+  --maxw: 1180px;
+
+  --safe-t: env(safe-area-inset-top, 0px);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:calc(96px + var(--safe-t));}
+body{
+  margin:0;
+  font-family:'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color:var(--text);
+  background:#bb7bff;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%; display:block;}
+a{text-decoration:none; color:inherit;}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif; line-height:1.12; margin:0; color:var(--mk-ink);}
+p{margin:0;}
+
+.wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:22px;}
+.section{padding:84px 0;}
+.eyebrow{
+  font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.82rem;
+  letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px;
+}
+.accent-red{color:var(--mk-red);}
+.accent-yellow{color:var(--mk-yellow-2);}
+
+/* Tombol */
+.btn{
+  display:inline-flex; align-items:center; gap:10px; cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; border:none;
+  border-radius:999px; padding:15px 28px; font-size:.95rem;
+  transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn:active{transform:translateY(0);}
+.btn-yellow{background:var(--grad-yellow); color:#5A3A00; box-shadow:0 10px 22px rgba(253,185,19,.4);}
+.btn-yellow:hover{filter:brightness(1.03);}
+.btn-red{background:var(--mk-red); color:#fff; box-shadow:0 10px 22px rgba(234,28,45,.35);}
+.btn-ghost-white{background:#fff; color:var(--mk-red); box-shadow:var(--shadow-sm);}
+.btn-block{width:100%; justify-content:center;}
+
+/* ============================================================
+   NAVBAR — pill merah floating
+   ============================================================ */
+.nav-shell{position:sticky; top:0; z-index:60; padding:calc(16px + var(--safe-t)) 16px 8px;}
+.nav{
+  max-width:var(--maxw); margin-inline:auto;
+  background:var(--mk-red); border-radius:999px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px 12px 24px; box-shadow:0 14px 30px rgba(234,28,45,.28);
+}
+.brand{display:flex; align-items:center; gap:8px; color:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:1.5rem;}
+.brand .dot{color:var(--mk-yellow-2);}
+.nav-links{display:flex; align-items:center; gap:30px;}
+.nav-links a{color:#fff; font-weight:600; font-size:.95rem; opacity:.95;}
+.nav-links a:hover{opacity:1; text-decoration:underline; text-underline-offset:4px;}
+.nav-cta{background:var(--grad-yellow); color:#5A3A00; padding:11px 22px; border-radius:999px; font-weight:700; box-shadow:0 6px 16px rgba(0,0,0,.18);}
+.nav-cta:hover{filter:brightness(1.04); text-decoration:none;}
+.nav-burger{display:none; background:none; border:none; color:#fff; font-size:1.6rem; cursor:pointer; line-height:1;}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{background:var(--grad-purple-soft); padding:40px 0 80px; position:relative; overflow:hidden;}
+.hero::before{content:""; position:absolute; top:-120px; right:-80px; width:360px; height:360px; background:radial-gradient(circle,#F3D9FF,transparent 70%); opacity:.7;}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:50px; align-items:center; position:relative;}
+.cobrand{display:inline-flex; align-items:center; gap:12px; background:#fff; border-radius:999px; padding:8px 18px; box-shadow:var(--shadow-sm); font-weight:800; color:var(--mk-ink); margin-bottom:24px;}
+.cobrand .x{color:var(--mk-red); font-weight:700;}
+.cobrand .mk{color:var(--mk-red); font-family:'Plus Jakarta Sans',sans-serif; font-size:1.05rem;}
+.cobrand .pp{color:#0067B1; font-weight:700; font-size:.9rem; letter-spacing:.02em;}
+.hero h1{font-size:clamp(2.2rem, 5vw, 3.4rem); font-weight:800;}
+.hero h1 .red{color:var(--mk-red); display:block;}
+.hero p.lead{margin:22px 0 30px; color:var(--muted); font-size:1.06rem; max-width:48ch;}
+.hero p.lead b{color:var(--mk-ink);}
+
+/* Kartu Voucher (hero) */
+.voucher-hero{position:relative; margin-top:10px;}
+.ribbon{
+  position:absolute; top:-14px; left:50%; transform:translateX(-50%) rotate(-2deg);
+  background:var(--mk-red); color:#fff; font-weight:800; letter-spacing:.08em;
+  padding:10px 30px; border-radius:10px; font-size:.82rem; z-index:3;
+  box-shadow:0 8px 18px rgba(234,28,45,.4); white-space:nowrap;
+}
+.ribbon::before,.ribbon::after{content:""; position:absolute; bottom:-8px; border:8px solid var(--mk-red-700); z-index:-1;}
+.ribbon::before{left:-6px; border-right-color:transparent; border-bottom-color:transparent;}
+.ribbon::after{right:-6px; border-left-color:transparent; border-bottom-color:transparent;}
+.voucher-card{
+  background:#fff; border-radius:var(--radius-lg); padding:46px 28px 24px; text-align:center;
+  box-shadow:var(--shadow); position:relative; border:3px solid #FFE08A;
+}
+.voucher-card .product-slot{
+  /* GANTI: kemasan Pepsodent Pro·Care */
+  height:150px; margin:4px auto 16px; border-radius:18px;
+  background:linear-gradient(135deg,#EAF4FF,#D5E9FF);
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  color:#4a7bb5; font-weight:700; font-size:.85rem; gap:6px;
+  border:2px dashed #9cc2ec;
+}
+.voucher-card .product-slot .ico{font-size:2.2rem;}
+.voucher-card h3{color:var(--mk-ink); font-size:1.4rem; font-weight:800;}
+.voucher-card .senilai{color:var(--muted); font-size:.85rem; margin-top:2px;}
+.voucher-card .price{color:var(--mk-red); font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:2.6rem; line-height:1; margin:6px 0 4px;}
+.voucher-card .note{font-size:.82rem; color:var(--muted);}
+.voucher-card .base{margin:18px -28px -24px; background:var(--grad-red); height:24px; border-radius:0 0 26px 26px;}
+
+/* ============================================================
+   MICROBIOME
+   ============================================================ */
+.microbiome{background:linear-gradient(180deg, #bb48da 0%, #622381 100%); color:#fff; position:relative;}
+.card-microbiome{
+  background:#fff; color:var(--text); border-radius:var(--radius-lg);
+  box-shadow:var(--shadow); padding:46px; display:grid;
+  grid-template-columns:1.3fr .7fr; gap:40px; align-items:center;
+}
+.card-microbiome .eyebrow{color:var(--mk-purple);}
+.card-microbiome h2{font-size:clamp(1.8rem,3.4vw,2.5rem); font-weight:800;}
+.card-microbiome h2 .red{color:var(--mk-red);}
+.card-microbiome p.desc{margin:16px 0 20px; color:var(--muted);}
+.habit-title{font-weight:700; color:var(--mk-ink); margin-bottom:10px;}
+.habit-list{list-style:none; padding:0; margin:0 0 18px; display:grid; gap:10px;}
+.habit-list li{display:flex; align-items:center; gap:12px; font-weight:600; color:var(--text);}
+.habit-list li .tick{flex:none; width:26px; height:26px; border-radius:50%; background:var(--lav-100); color:var(--mk-purple); display:grid; place-items:center; font-weight:800; font-size:.9rem;}
+.disclaimer{font-size:.78rem; color:var(--mk-red); line-height:1.5;}
+
+.microbe-circle{
+  aspect-ratio:1; border-radius:50%; position:relative; display:grid; place-items:center; text-align:center;
+  background:radial-gradient(circle at 30% 30%, #FAF2FF, #EADBFB);
+  border:10px solid #F3E6FF; box-shadow:inset 0 0 0 6px #fff, var(--shadow-sm);
+}
+.microbe-circle .big{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:clamp(3rem,8vw,4.4rem); color:var(--mk-purple); line-height:1;}
+.microbe-circle .cap{font-size:.82rem; color:var(--muted); font-weight:600; max-width:18ch; margin-top:6px;}
+.microbe-circle .germ{position:absolute; font-size:1.6rem;}
+.microbe-circle .g1{top:4%; right:14%;}
+.microbe-circle .g2{bottom:8%; left:6%;}
+.microbe-circle .g3{top:46%; right:-4%;}
+
+/* ============================================================
+   JOURNEY (Periksa / Pantau / Rawat)
+   ============================================================ */
+.journey{background:var(--grad-purple); color:#fff; padding-top:20px;}
+.section-head{text-align:center; max-width:760px; margin:0 auto 46px;}
+.journey h2, .usia h2{color:#fff; font-size:clamp(1.9rem,4vw,2.8rem); font-weight:800;}
+.journey h2 .yellow, .usia h2 .yellow{color:var(--mk-yellow-2);}
+.journey p.sub, .usia p.sub{color:rgba(255,255,255,.88); margin-top:14px;}
+.cards-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+.feat-card{background:linear-gradient(180deg,#ffffff 0%,#F1E6FB 100%); border:1px solid rgba(255,255,255,.65); border-radius:20px; padding:26px 24px 24px; text-align:center; box-shadow:0 12px 30px rgba(46,16,101,.18); transition:transform .2s ease;}
+.feat-card:hover{transform:translateY(-4px);}
+.feat-card .feat-ico{height:54px; width:auto; margin:0 auto 14px; display:block;}
+.feat-card h3{color:var(--mk-ink); font-size:1.2rem; font-weight:700; margin-bottom:6px;}
+.feat-card p{color:var(--muted); font-size:.9rem; line-height:1.5;}
+
+/* ============================================================
+   CARA KLAIM (merah) + FORM
+   ============================================================ */
+.klaim{background:var(--grad-red); color:#fff;}
+.klaim .eyebrow{color:#fff; opacity:.9;}
+.klaim h2{color:#fff; font-size:clamp(1.9rem,4vw,2.8rem); font-weight:800;}
+.klaim h2 .yellow{color:var(--mk-yellow-2);}
+.klaim p.sub{color:rgba(255,255,255,.9); margin:12px 0 26px; max-width:52ch;}
+
+.klaim-grid{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr); gap:40px; align-items:start;}
+
+/* voucher slider — tiket yang bisa digeser */
+.voucher-slider{
+  display:flex; gap:16px; overflow-x:auto; position:relative; min-width:0;
+  padding:6px 2px 16px; scroll-snap-type:x mandatory; cursor:grab;
+  -ms-overflow-style:none; scrollbar-width:none;
+}
+.voucher-slider::-webkit-scrollbar{display:none;}
+.voucher-slider.dragging{cursor:grabbing; scroll-snap-type:none;}
+.voucher-slider.dragging .ticket{pointer-events:none;}
+
+.ticket{
+  flex:0 0 240px; scroll-snap-align:start; position:relative;
+  background:#FFD84D; color:#3B1A6B; padding:22px 24px; min-height:122px;
+  display:flex; flex-direction:column; justify-content:center; user-select:none;
+  --c:9px;
+  -webkit-mask:
+    radial-gradient(var(--c) at left,  #0000 98%, #000) left  / 52% calc(var(--c)*2) repeat-y,
+    radial-gradient(var(--c) at right, #0000 98%, #000) right / 52% calc(var(--c)*2) repeat-y;
+          mask:
+    radial-gradient(var(--c) at left,  #0000 98%, #000) left  / 52% calc(var(--c)*2) repeat-y,
+    radial-gradient(var(--c) at right, #0000 98%, #000) right / 52% calc(var(--c)*2) repeat-y;
+}
+.ticket.ticket-amount{flex-basis:262px;}
+.ticket .t-eyebrow{font-weight:700; font-size:.8rem; color:#3B1A6B;}
+.ticket .t-price{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:2.1rem; line-height:1; color:#2E1065; margin:2px 0 7px;}
+.ticket .t-foot{font-size:.74rem; color:var(--mk-red); font-weight:600; line-height:1.45;}
+.ticket .t-name{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:1.45rem; color:var(--mk-red); line-height:1.1;}
+.ticket .t-desc{font-size:.85rem; color:#E0591F; font-weight:600; margin-top:3px;}
+.ticket .t-tags{display:flex; gap:18px; margin-top:16px; font-weight:800; color:#3B1A6B; font-size:.92rem;}
+
+.slider-dots{display:flex; gap:8px; margin-bottom:30px; padding-left:2px;}
+.slider-dots button{width:9px; height:9px; border-radius:50%; border:none; background:rgba(255,255,255,.5); cursor:pointer; padding:0; transition:all .22s ease;}
+.slider-dots button.active{background:#fff; width:24px; border-radius:999px;}
+.voucher-strip{height:150px; width:auto; max-width:none; flex:0 0 auto; display:block;}
+
+/* langkah 01-04 */
+.steps{display:grid; gap:18px; position:relative;}
+.steps::before{content:""; position:absolute; left:26px; top:16px; bottom:16px; width:2px; background:rgba(255,255,255,.28);}
+.step{display:flex; align-items:center; gap:18px; position:relative; z-index:1;}
+.step .num{flex:none; width:54px; text-align:center; font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:2.3rem; line-height:1; color:transparent; -webkit-text-stroke:2px rgba(255,255,255,.6); text-stroke:2px rgba(255,255,255,.6);}
+.step .st-title{font-weight:700; color:#fff;}
+.step .st-sub{font-size:.9rem; color:rgba(255,255,255,.82);}
+
+/* form */
+.form-card{background:linear-gradient(180deg,#ffffff 0%,#F3E8FF 100%); border:2px solid #C9A7F0; border-radius:var(--radius-lg); padding:34px 30px; box-shadow:var(--shadow); color:var(--text);}
+.form-card h3{text-align:center; color:var(--mk-ink); font-size:1.5rem; font-weight:800; margin-bottom:22px;}
+.field{margin-bottom:16px;}
+.field label{display:block; font-weight:600; font-size:.88rem; color:var(--mk-ink); margin-bottom:6px;}
+.field input, .field select{
+  width:100%; padding:13px 15px; border:2px solid var(--lav-200); border-radius:14px;
+  font-family:inherit; font-size:.95rem; color:var(--text); background:#fff; transition:border-color .15s ease;
+}
+.field input:focus, .field select:focus{outline:none; border-color:var(--mk-purple);}
+.check{display:flex; align-items:flex-start; gap:10px; font-size:.84rem; color:var(--muted); margin:14px 0 20px;}
+.check input{margin-top:3px; accent-color:var(--mk-purple); width:18px; height:18px; flex:none;}
+.check a{color:var(--mk-purple); font-weight:600; text-decoration:underline;}
+.form-msg{display:none; text-align:center; font-size:.9rem; font-weight:600; margin-top:12px; color:#1a8a3d;}
+
+/* ============================================================
+   SETIAP TAHAP USIA (ungu)
+   ============================================================ */
+.usia{background:var(--grad-purple); color:#fff;}
+.age-pills{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:0 auto 40px; max-width:1000px;}
+.age-pill{background:#fff; border:1.5px solid #F3B4B7; color:var(--mk-ink); font-weight:500; font-size:.92rem; padding:10px 12px; border-radius:999px; cursor:pointer; display:inline-flex; align-items:center; gap:0; white-space:nowrap; box-shadow:0 4px 12px rgba(0,0,0,.08); transition:padding .3s ease, border-color .15s ease, background .2s ease, box-shadow .2s ease;}
+.age-pill .emo{font-size:1.3rem; line-height:1;}
+.age-pill .nm{color:var(--mk-red); font-weight:700;}
+.age-pill .rng{color:var(--mk-ink);}
+/* teks tersembunyi saat collapse */
+.age-pill .nm, .age-pill .rng{max-width:0; opacity:0; overflow:hidden; transition:max-width .32s ease, opacity .25s ease, margin .32s ease;}
+.age-pill:hover .nm, .age-pill:focus-visible .nm, .age-pill.active .nm{max-width:260px; opacity:1; margin-left:9px;}
+.age-pill:hover .rng, .age-pill:focus-visible .rng, .age-pill.active .rng{max-width:260px; opacity:1; margin-left:6px;}
+/* melebar saat disenggol / terpilih */
+.age-pill:hover, .age-pill:focus-visible{border-color:var(--mk-red); padding:11px 20px;}
+.age-pill.active{border-color:var(--mk-red); background:#FFF2F3; padding:11px 20px; box-shadow:0 6px 16px rgba(234,28,45,.2);}
+
+.usia-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:46px;}
+.usia-card{background:#fff; color:var(--text); border-radius:var(--radius); padding:28px 24px; box-shadow:var(--shadow-sm); text-align:center;}
+.usia-card .ico{font-size:2.4rem; margin-bottom:12px;}
+.usia-card h3{color:var(--mk-ink); font-size:1.15rem; font-weight:700; margin-bottom:8px;}
+.usia-card p{color:var(--muted); font-size:.92rem;}
+
+/* foto keluarga (placeholder) */
+.family-slot{
+  /* GANTI: foto keluarga multi-generasi di klinik Medikids */
+  border-radius:var(--radius-lg); overflow:hidden; margin-bottom:46px;
+  background:linear-gradient(135deg,#EFE3FB,#F7F1FD);
+  border:2px dashed #c9b3ec; aspect-ratio:21/9; display:flex; align-items:center; justify-content:center; flex-direction:column;
+  color:#7a5fb0; font-weight:700; gap:8px; text-align:center; padding:20px;
+}
+.family-slot .ico{font-size:2.6rem;}
+
+.stats{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; text-align:center;}
+.stat .num{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:clamp(2.2rem,5vw,3rem); color:var(--mk-yellow-2); line-height:1;}
+.stat .lbl{color:rgba(255,255,255,.88); font-weight:600; margin-top:4px;}
+
+/* ============================================================
+   LOKASI
+   ============================================================ */
+.lokasi{background:linear-gradient(180deg, #ddbdff 0%, #eedfff 40%, #f7f1ff 70%, #eedfff 100%);}
+.lokasi-grid{display:grid; grid-template-columns:1fr 1fr; gap:46px; align-items:center;}
+.lokasi .eyebrow{color:var(--mk-purple);}
+.lokasi h2{font-size:clamp(1.9rem,4vw,2.8rem); font-weight:800;}
+.lokasi h2 .red{color:var(--mk-red);}
+.lokasi p.sub{color:var(--muted); margin:14px 0 24px;}
+.loc-pills{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:26px;}
+.loc-pill{background:#fff; border:1.5px solid #F3B4B7; color:var(--mk-red); font-weight:700; font-size:.9rem; padding:10px 18px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:6px; transition:all .15s ease;}
+.loc-pill.active, .loc-pill:hover{background:#FFF2F3; color:var(--mk-red); border-color:var(--mk-red);}
+.map-slot{
+  /* GANTI: ilustrasi peta / klinik Medikids */
+  border-radius:var(--radius-lg); aspect-ratio:4/3;
+  background:linear-gradient(160deg,#BFE3FF,#DFF3D6);
+  border:2px dashed #93b8d6; display:flex; align-items:center; justify-content:center; flex-direction:column;
+  color:#4a7bb5; font-weight:700; gap:8px; text-align:center; padding:20px; box-shadow:var(--shadow-sm);
+}
+.map-slot .ico{font-size:2.8rem;}
+
+/* ============================================================
+   SYARAT & KETENTUAN + FOOTER
+   ============================================================ */
+.snk-wrap{background:linear-gradient(180deg, #bb48da 0%, #622381 100%); padding:64px 0;}
+.snk{max-width:900px; margin-inline:auto; display:grid; gap:14px;}
+.snk-head{width:100%; text-align:left; background:#fff; border:none; cursor:pointer; padding:17px 22px; border-radius:16px; display:flex; align-items:center; gap:12px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; color:var(--mk-ink); font-size:1rem; box-shadow:var(--shadow-sm);}
+.snk-ico{flex:none; width:26px; height:26px; border-radius:7px; background:#2BA8C4; color:#fff; display:grid; place-items:center; font-size:.8rem; line-height:1;}
+.snk-head .chev{margin-left:auto; transition:transform .25s ease; color:var(--mk-purple); font-size:1.1rem;}
+.snk.open .snk-head .chev{transform:rotate(180deg);}
+.snk-panel{background:#fff; border-radius:18px; box-shadow:var(--shadow-sm); max-height:0; overflow:hidden; transition:max-height .32s ease;}
+.snk-panel-inner{padding:20px 24px 22px;}
+.snk-panel-inner .p-title{display:flex; align-items:center; gap:12px; font-weight:700; color:var(--mk-ink); padding:16px 0 8px;}
+.snk-panel-inner ul{margin:0; padding:0 0 0 20px; color:var(--muted); display:grid; gap:10px; font-size:.94rem;}
+
+footer{background:#410e76; color:#fff; text-align:center; padding:48px 20px calc(36px + var(--safe-b));}
+footer .brand{justify-content:center; margin-bottom:12px;}
+footer .copy{color:rgba(255,255,255,.8); font-size:.88rem;}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  .section{padding:60px 0;}
+  .hero-grid,.card-microbiome,.klaim-grid,.lokasi-grid{grid-template-columns:1fr; gap:34px;}
+  .cards-3,.usia-grid,.stats{grid-template-columns:1fr;}
+  .card-microbiome{padding:30px;}
+  .microbe-circle{max-width:280px; margin:0 auto;}
+  .nav-links{display:none;}
+  .nav-burger{display:block;}
+  .nav-links.open{display:flex; position:absolute; top:calc(100% + 10px); right:16px; left:16px; background:var(--mk-red); flex-direction:column; align-items:flex-start; gap:16px; padding:22px; border-radius:22px; box-shadow:var(--shadow);}
+  .nav-links.open .nav-cta{align-self:stretch; text-align:center;}
+  .tindakan{grid-template-columns:1fr;}
+  .tind-card.big{grid-column:span 1;}
+}
+@media (max-width:560px){
+  .voucher-card{padding:40px 20px 20px;}
+  .step .num{width:46px; font-size:1.9rem;}
+}
+
+/* Aksesibilitas: hormati reduce-motion */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+}
+
+/* === aset gambar (logo co-brand, voucher, lingkaran 700+, kartu journey) === */
+.cobrand-logo{height:30px; width:auto; display:block;}
+.voucher-img{display:block; width:100%; max-width:420px; margin:0 auto; filter:drop-shadow(0 20px 40px rgba(46,16,101,.22));}
+.microbe-img{display:block; width:100%; max-width:380px; margin:0 auto;}
+.feat-img{width:100%; border-radius:18px; display:block; box-shadow:var(--shadow); transition:transform .2s ease; background:#fff;}
+.feat-img:hover{transform:translateY(-4px);}
+@media (max-width:900px){
+  .cobrand-logo{height:26px;}
+  .voucher-img{max-width:340px;}
+}
+
+/* aset dari desain: ilustrasi klinik & logo Medikids */
+.clinic-img{width:100%; border-radius:var(--radius-lg); display:block; box-shadow:var(--shadow-sm);}
+.brand-logo{height:30px; width:auto; display:block;}
+footer .brand-logo{height:34px;}
+
+/* pola titik dekoratif (totol) — mengelompok lalu memudar, seperti desain */
+.hero,.microbiome,.journey,.klaim,.usia,.lokasi{position:relative;}
+.wrap{position:relative; z-index:1;}
+.hero::after,.microbiome::after,.journey::after,.klaim::after,.usia::after,.lokasi::after{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none; background-size:22px 22px;}
+.hero::after{background-image:radial-gradient(rgba(94,37,158,.16) 1.4px,transparent 1.7px);
+  -webkit-mask-image:radial-gradient(95% 95% at 0% 0%,#000,transparent 58%);mask-image:radial-gradient(95% 95% at 0% 0%,#000,transparent 58%);}
+.lokasi::after{background-image:radial-gradient(rgba(94,37,158,.15) 1.4px,transparent 1.7px);
+  -webkit-mask-image:radial-gradient(85% 120% at 0% 0%,#000,transparent 55%);mask-image:radial-gradient(85% 120% at 0% 0%,#000,transparent 55%);}
+.klaim::after{background-image:radial-gradient(rgba(255,255,255,.18) 1.4px,transparent 1.7px);
+  -webkit-mask-image:radial-gradient(85% 120% at 100% 50%,#000,transparent 60%);mask-image:radial-gradient(85% 120% at 100% 50%,#000,transparent 60%);}
+.microbiome::after{background-image:radial-gradient(rgba(255,255,255,.15) 1.4px,transparent 1.7px);
+  -webkit-mask-image:radial-gradient(80% 115% at 100% 20%,#000,transparent 58%);mask-image:radial-gradient(80% 115% at 100% 20%,#000,transparent 58%);}
+.journey::after{background-image:radial-gradient(rgba(255,255,255,.13) 1.4px,transparent 1.7px);
+  -webkit-mask-image:linear-gradient(90deg,transparent 52%,#000);mask-image:linear-gradient(90deg,transparent 52%,#000);}
+.usia::after{background-image:radial-gradient(rgba(255,255,255,.13) 1.4px,transparent 1.7px);
+  -webkit-mask-image:radial-gradient(80% 115% at 0% 60%,#000,transparent 58%);mask-image:radial-gradient(80% 115% at 0% 60%,#000,transparent 58%);}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<div class="nav-shell">
+  <nav class="nav">
+    <a href="#top" class="brand"><img class="brand-logo" src="https://medikids.co.id/wp-content/uploads/2026/10/medikids-logo-white.png" alt="Medikids" /></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#journey">Journey</a>
+      <a href="#klaim">Cara Klaim</a>
+      <a href="#lokasi">Lokasi</a>
+      <a href="#klaim" class="nav-cta">Klaim Voucher</a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Buka menu">☰</button>
+  </nav>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="cobrand"><img class="cobrand-logo" src="https://medikids.co.id/wp-content/uploads/2026/10/medikids-pepsodent-logo.png" alt="Medikids × Pepsodent Pro·Care" /></span>
+      <h1>Senyum Sehat Dimulai dari Rumah,
+        <span class="red">Didukung bersama Dokter Gigi</span>
+      </h1>
+      <p class="lead">Kesehatan mulut dimulai dari kebiasaan baik setiap hari. <b>Jaga keseimbangan microbiome mulut</b> dengan Pepsodent Pro·Care dan lengkapi dengan pemeriksaan rutin bersama dokter gigi Medikids.</p>
+      <a href="#journey" class="btn btn-yellow">Mulai Healthy Mouth Journey</a>
+    </div>
+
+    <div class="voucher-hero">
+      <img class="voucher-img" src="https://medikids.co.id/wp-content/uploads/2026/10/voucher-medikids.png" alt="Voucher Medikids senilai Rp150.000 — lanjutkan journey dari rumah ke klinik" />
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     MICROBIOME
+     ============================================================ -->
+<section class="section microbiome">
+  <div class="wrap">
+    <div class="card-microbiome">
+      <div>
+        <div class="eyebrow">Apa itu Microbiome?</div>
+        <h2>Mulut Sehat Dimulai dari <span class="red">Keseimbangan Microbiome</span></h2>
+        <p class="desc">Ada <b>700+ spesies mikroorganisme</b> di rongga mulut. Pepsodent Pro·Care dengan teknologi <b>Microbiome Active</b> dirancang untuk membantu menjaga keseimbangannya.</p>
+
+        <div class="habit-title">Cara menjaga gigi sehat:</div>
+        <ul class="habit-list">
+          <li><span class="tick">✓</span> Jaga keseimbangan microbiome</li>
+          <li><span class="tick">✓</span> Cek gigi &amp; mulut secara berkala</li>
+        </ul>
+
+        <p class="disclaimer">*Perlindungan mulut 24/7 sesuai klaim pada kemasan. Informasi ini bersifat edukatif dan tidak menggantikan konsultasi dengan dokter gigi.</p>
+      </div>
+
+      <img class="microbe-img" src="https://medikids.co.id/wp-content/uploads/2026/10/microbiome-700.png" alt="700+ spesies mikroorganisme hidup di rongga mulut" />
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     JOURNEY
+     ============================================================ -->
+<section class="section journey" id="journey">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Di Sinilah Medikids Melengkapi <span class="yellow">Healthy Mouth Journey</span> Kamu</h2>
+      <p class="sub">Setelah menjaga kesehatan mulut setiap hari di rumah, lanjutkan dengan pemeriksaan bersama dokter gigi Medikids. Dokter gigi membantu memeriksa kondisi gigi, gusi, dan rongga mulut, serta memberikan rekomendasi perawatan sesuai kebutuhan.</p>
+    </div>
+    <div class="cards-3">
+      <div class="feat-card">
+        <img class="feat-ico" src="https://medikids.co.id/wp-content/uploads/2026/10/icon-periksa.png" alt="" />
+        <h3>Periksa</h3>
+        <p>Ketahui kondisi kesehatan gigi dan mulut melalui pemeriksaan dokter gigi.</p>
+      </div>
+      <div class="feat-card">
+        <img class="feat-ico" src="https://medikids.co.id/wp-content/uploads/2026/10/icon-pantau.png" alt="" />
+        <h3>Pantau</h3>
+        <p>Pantau kondisi gigi dan gusi secara berkala.</p>
+      </div>
+      <div class="feat-card">
+        <img class="feat-ico" src="https://medikids.co.id/wp-content/uploads/2026/10/icon-rawat.png" alt="" />
+        <h3>Rawat</h3>
+        <p>Jika diperlukan, lanjutkan dengan perawatan profesional sesuai kebutuhan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CARA KLAIM + FORM
+     ============================================================ -->
+<section class="section klaim" id="klaim">
+  <div class="wrap">
+    <div class="klaim-grid">
+      <!-- kiri -->
+      <div>
+        <div class="eyebrow">Cara Klaim</div>
+        <h2>Klaim Voucher <span class="yellow">Medikids</span></h2>
+        <p class="sub">Beli Pepsodent Pro·Care di Guardian, dapatkan voucher layanan Medikids senilai Rp150.000.</p>
+
+        <div class="voucher-slider" id="voucherSlider">
+          <img class="voucher-strip" src="https://medikids.co.id/wp-content/uploads/2026/10/Voucher-150-Medikids-Pepsodent.png" alt="Voucher Medikids Rp150.000 — untuk Scaling, Tambal Gigi, dan Cabut Gigi" />
+        </div>
+        <div class="slider-dots" id="sliderDots" aria-hidden="true"></div>
+
+        <div class="steps">
+          <div class="step"><div class="num">01</div><div><div class="st-title">Beli Pepsodent Pro·Care</div><div class="st-sub">di Guardian</div></div></div>
+          <div class="step"><div class="num">02</div><div><div class="st-title">Scan QR</div><div class="st-sub">Pada kemasan atau display</div></div></div>
+          <div class="step"><div class="num">03</div><div><div class="st-title">Klaim Voucher Medikids</div><div class="st-sub">Isi data pada halaman ini</div></div></div>
+          <div class="step"><div class="num">04</div><div><div class="st-title">Kunjungi Medikids</div><div class="st-sub">Tunjukkan voucher saat kunjungan</div></div></div>
+        </div>
+      </div>
+
+      <!-- kanan: form -->
+      <div class="form-card">
+        <h3>Isi Data Kamu</h3>
+        <form id="claimForm" novalidate>
+          <div class="field">
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" placeholder="Nama lengkap" required>
+          </div>
+          <div class="field">
+            <label for="wa">No. WhatsApp</label>
+            <input type="tel" id="wa" name="wa" placeholder="08xxxxxxxxxx" required>
+          </div>
+          <div class="field">
+            <label for="lokasi">Pilih Lokasi Medikids</label>
+            <select id="lokasi" name="lokasi" required>
+              <option value="" disabled selected>Pilih cabang terdekat</option>
+              <option>Jabodetabek</option>
+              <option>Kota-kota di Jawa</option>
+              <option>Luar Jawa</option>
+            </select>
+          </div>
+          <label class="check">
+            <input type="checkbox" id="setuju" required>
+            <span>Saya menyetujui penggunaan data sesuai <a href="#snk">kebijakan program</a>.</span>
+          </label>
+          <button type="submit" class="btn btn-red btn-block">Klaim Voucher</button>
+          <p class="form-msg" id="formMsg">✅ Terima kasih! Data kamu sudah terkirim.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SETIAP TAHAP USIA
+     ============================================================ -->
+<section class="section usia">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="color:var(--mk-yellow-2)">Your Professional Oral Care Partner</div>
+      <h2>Perawatan Gigi untuk <span class="yellow">Setiap Tahap Usia</span></h2>
+      <p class="sub">Medikids menyediakan layanan kesehatan gigi untuk anak hingga dewasa dengan dokter gigi profesional dan pendekatan yang ramah keluarga.</p>
+    </div>
+
+    <div class="age-pills">
+      <button class="age-pill"><span class="emo">👶</span><span class="nm">Bayi &amp; Balita</span><span class="rng">(≤ 5 tahun)</span></button>
+      <button class="age-pill active"><span class="emo">👧</span><span class="nm">Anak-anak</span><span class="rng">(5–9 tahun)</span></button>
+      <button class="age-pill"><span class="emo">🧑</span><span class="nm">Remaja</span><span class="rng">(10–18 tahun)</span></button>
+      <button class="age-pill"><span class="emo">🧔</span><span class="nm">Dewasa</span><span class="rng">(18–59 tahun)</span></button>
+      <button class="age-pill"><span class="emo">👵</span><span class="nm">Lansia</span><span class="rng">(≥ 60 tahun)</span></button>
+    </div>
+
+
+    <div class="stats">
+      <div class="stat"><div class="num">40+</div><div class="lbl">Cabang</div></div>
+      <div class="stat"><div class="num">400+</div><div class="lbl">Dokter Gigi Spesialis</div></div>
+      <div class="stat"><div class="num">100K+</div><div class="lbl">Pasien / Tahun</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LOKASI
+     ============================================================ -->
+<section class="section lokasi" id="lokasi">
+  <div class="wrap lokasi-grid">
+    <div>
+      <div class="eyebrow">Lokasi Klinik Medikids</div>
+      <h2>Temukan <span class="red">Medikids</span> Terdekat</h2>
+      <p class="sub">Pilih lokasi Medikids yang paling dekat dengan kamu dan nikmati layanan kesehatan gigi dan keluarga bersama dokter profesional.</p>
+      <div class="loc-pills">
+        <button class="loc-pill active">📍 Jabodetabek</button>
+        <button class="loc-pill">📍 Kota-kota di Jawa</button>
+        <button class="loc-pill">📍 Luar Jawa</button>
+      </div>
+      <a href="#" class="btn btn-yellow">Cari Lokasi</a>
+    </div>
+    <img class="clinic-img" src="https://medikids.co.id/wp-content/uploads/2026/10/lokasi-klinik.png" alt="Lokasi klinik Medikids" />
+  </div>
+</section>
+
+<!-- ============================================================
+     SYARAT & KETENTUAN
+     ============================================================ -->
+<div class="snk-wrap" id="snk">
+  <div class="wrap">
+    <div class="snk" id="snkBox">
+      <button class="snk-head" id="snkToggle" aria-expanded="false" aria-controls="snkPanel">
+        <span class="snk-ico">➜</span>
+        <span>Syarat &amp; Ketentuan</span>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="snk-panel" id="snkPanel">
+        <div class="snk-panel-inner">
+          <ul>
+            <li>Voucher diperoleh melalui pembelian Pepsodent Procare di Watsons sesuai periode program.</li>
+            <li>Voucher hanya dapat digunakan sesuai ketentuan program.</li>
+            <li>Voucher berlaku di cabang Medikids yang berpartisipasi.</li>
+            <li>Voucher tidak dapat diuangkan.</li>
+            <li>Syarat, periode berlaku, dan ketentuan penggunaan mengikuti program yang telah disepakati oleh Pepsodent/Unilever dan Medikids.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="brand" style="display:flex;align-items:center;justify-content:center;"><img class="brand-logo" src="https://medikids.co.id/wp-content/uploads/2026/10/medikids-logo-white.png" alt="Medikids" /></div>
+  <p class="copy">© 2026 Medikids × Pepsodent Pro·Care</p>
+</footer>
+
+<script>
+/* Menu mobile */
+const burger = document.getElementById('navBurger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', ()=> navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> navLinks.classList.remove('open')));
+
+/* Tab umur */
+document.querySelectorAll('.age-pill').forEach(p=>{
+  p.addEventListener('click', ()=>{
+    document.querySelectorAll('.age-pill').forEach(x=>x.classList.remove('active'));
+    p.classList.add('active');
+  });
+});
+
+/* Filter lokasi */
+document.querySelectorAll('.loc-pill').forEach(p=>{
+  p.addEventListener('click', ()=>{
+    document.querySelectorAll('.loc-pill').forEach(x=>x.classList.remove('active'));
+    p.classList.add('active');
+  });
+});
+
+/* Accordion S&K */
+const snkBox = document.getElementById('snkBox');
+const snkToggle = document.getElementById('snkToggle');
+const snkPanel = document.getElementById('snkPanel');
+snkToggle.addEventListener('click', ()=>{
+  const open = snkBox.classList.toggle('open');
+  snkToggle.setAttribute('aria-expanded', open);
+  snkPanel.style.maxHeight = open ? snkPanel.scrollHeight + 'px' : 0;
+});
+
+/* Voucher slider (gambar) — geser/swipe + titik indikator */
+const slider = document.getElementById('voucherSlider');
+const dotsWrap = document.getElementById('sliderDots');
+if(slider && dotsWrap){
+  const N = 4;
+  for(let i=0;i<N;i++){
+    const b=document.createElement('button');
+    b.setAttribute('aria-label','Voucher '+(i+1));
+    if(i===0) b.classList.add('active');
+    b.addEventListener('click', ()=>{ const max=slider.scrollWidth-slider.clientWidth; slider.scrollTo({left:max*(i/(N-1)), behavior:'smooth'}); });
+    dotsWrap.appendChild(b);
+  }
+  const dots=[...dotsWrap.children];
+  const sync=()=>{ const max=slider.scrollWidth-slider.clientWidth; const idx = max>4 ? Math.round(slider.scrollLeft/max*(N-1)) : 0; dots.forEach((d,i)=>d.classList.toggle('active', i===idx)); };
+  const checkOverflow=()=>{ dotsWrap.style.display = (slider.scrollWidth > slider.clientWidth+4) ? 'flex' : 'none'; };
+  slider.addEventListener('scroll', sync, {passive:true});
+  window.addEventListener('resize', checkOverflow);
+  const strip = slider.querySelector('img');
+  if(strip){ strip.complete ? checkOverflow() : strip.addEventListener('load', checkOverflow); } else checkOverflow();
+
+  let down=false, startX=0, startScroll=0;
+  slider.addEventListener('pointerdown', e=>{ down=true; startX=e.clientX; startScroll=slider.scrollLeft; slider.classList.add('dragging'); slider.setPointerCapture(e.pointerId); });
+  slider.addEventListener('pointermove', e=>{ if(down) slider.scrollLeft = startScroll-(e.clientX-startX); });
+  const stop=()=>{ down=false; slider.classList.remove('dragging'); };
+  slider.addEventListener('pointerup', stop); slider.addEventListener('pointercancel', stop);
+}
+
+/* Form klaim (demo — hubungkan ke backend/CRM kamu) */
+const form = document.getElementById('claimForm');
+const msg = document.getElementById('formMsg');
+form.addEventListener('submit', e=>{
+  e.preventDefault();
+  if(!form.checkValidity()){ form.reportValidity(); return; }
+  // TODO: kirim data ke endpoint / WhatsApp / spreadsheet di sini
+  msg.style.display = 'block';
+  form.reset();
+});
+</script>
+</body>
+</html>
